@@ -1,14 +1,13 @@
 package com.example.onlineshopbackend.admin.product.controller;
 
 
+import com.example.onlineshopbackend.admin.product.controller.dto.AdminProductDto;
 import com.example.onlineshopbackend.admin.product.model.AdminProduct;
 import com.example.onlineshopbackend.admin.product.service.AdminProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -24,6 +23,18 @@ public class AdminProductController {
     @GetMapping("/admin/products/{id}")
     public AdminProduct getProduct(@PathVariable Long id) {
         return ProductService.getProduct(id);
+    }
+
+    @PostMapping("/admin/products")
+    public AdminProduct createProduct(@RequestBody AdminProductDto adminProductDto) {
+        return ProductService.createProduct(AdminProduct.builder()
+                .name(adminProductDto.getName())
+                .description(adminProductDto.getDescription())
+                .category(adminProductDto.getCategory())
+                .price(adminProductDto.getPrice())
+                .currency(adminProductDto.getCurrency())
+                .build()
+        );
     }
 
 }

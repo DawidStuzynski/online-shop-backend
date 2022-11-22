@@ -1,21 +1,20 @@
-package com.example.onlineshopbackend.admin.product.model;
-
+package com.example.onlineshopbackend.admin.product.controller.dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "product")
 @Getter
-@Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class AdminProduct {
+@NoArgsConstructor
+public class AdminProductDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -25,5 +24,4 @@ public class AdminProduct {
     private String description;
     private BigDecimal price;
     private String currency;
-
 }

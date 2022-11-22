@@ -21,4 +21,9 @@ public class AdminProductService {
     public AdminProduct getProduct(Long id) {
         return productRepository.findById(id).orElseThrow();
     }
+
+    public AdminProduct createProduct(AdminProduct product) {
+        productRepository.save(product);
+
+    }
 }
