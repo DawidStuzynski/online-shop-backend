@@ -26,4 +26,8 @@ public class AdminProductService {
         return productRepository.save(product);
 
     }
+
+    public AdminProduct updateProduct(AdminProduct product) {
+        return productRepository.save(product);
+    }
 }

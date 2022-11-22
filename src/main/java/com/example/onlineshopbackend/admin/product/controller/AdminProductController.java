@@ -13,21 +13,31 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AdminProductController {
 
-    private final AdminProductService ProductService;
+    public static final Long EMPTY_ID = null;
+    private final AdminProductService productService;
 
     @GetMapping("/admin/products")
     public Page<AdminProduct> getProducts(Pageable pageable) {
-        return ProductService.getProducts(pageable);
+        return productService.getProducts(pageable);
     }
 
     @GetMapping("/admin/products/{id}")
     public AdminProduct getProduct(@PathVariable Long id) {
-        return ProductService.getProduct(id);
+        return productService.getProduct(id);
     }
 
     @PostMapping("/admin/products")
     public AdminProduct createProduct(@RequestBody AdminProductDto adminProductDto) {
-        return ProductService.createProduct(AdminProduct.builder()
+        return productService.createProduct(mapAdminProduct(adminProductDto, EMPTY_ID));
+    }
+
+    @PutMapping("/admin/products{id}")
+    public AdminProduct updateProduct(@RequestBody AdminProductDto adminProductDto, @PathVariable Long id) {
+        return productService.updateProduct(mapAdminProduct(adminProductDto, id));
+    }
+
+    private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
+        return productService.createProduct(AdminProduct.builder()
                 .name(adminProductDto.getName())
                 .description(adminProductDto.getDescription())
                 .category(adminProductDto.getCategory())
