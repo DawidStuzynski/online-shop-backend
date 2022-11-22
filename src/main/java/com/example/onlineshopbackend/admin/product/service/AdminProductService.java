@@ -23,7 +23,7 @@ public class AdminProductService {
     }
 
     public AdminProduct createProduct(AdminProduct product) {
-        productRepository.save(product);
+        return productRepository.save(product);
 
     }
 }
