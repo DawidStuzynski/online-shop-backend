@@ -20,8 +20,8 @@ public class AdminProductDto {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String name;
-    private String category;
     private String description;
+    private String category;
     private BigDecimal price;
     private String currency;
 }

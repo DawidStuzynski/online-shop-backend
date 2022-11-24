@@ -31,18 +31,19 @@ public class AdminProductController {
         return productService.createProduct(mapAdminProduct(adminProductDto, EMPTY_ID));
     }
 
-    @PutMapping("/admin/products{id}")
+    @PutMapping("/admin/products/{id}")
     public AdminProduct updateProduct(@RequestBody AdminProductDto adminProductDto, @PathVariable Long id) {
         return productService.updateProduct(mapAdminProduct(adminProductDto, id));
     }
 
     private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
         return productService.createProduct(AdminProduct.builder()
+                .id(id)
                 .name(adminProductDto.getName())
                 .description(adminProductDto.getDescription())
                 .category(adminProductDto.getCategory())
                 .price(adminProductDto.getPrice())
-                .currency(adminProductDto.getCurrency())
+                .currency(adminProductDto.getCurrency().toUpperCase())
                 .build()
         );
     }
