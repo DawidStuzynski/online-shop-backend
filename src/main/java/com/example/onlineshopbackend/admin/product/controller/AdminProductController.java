@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 public class AdminProductController {
@@ -27,12 +29,12 @@ public class AdminProductController {
     }
 
     @PostMapping("/admin/products")
-    public AdminProduct createProduct(@RequestBody AdminProductDto adminProductDto) {
+    public AdminProduct createProduct(@Valid @RequestBody AdminProductDto adminProductDto) {
         return productService.createProduct(mapAdminProduct(adminProductDto, EMPTY_ID));
     }
 
     @PutMapping("/admin/products/{id}")
-    public AdminProduct updateProduct(@RequestBody AdminProductDto adminProductDto, @PathVariable Long id) {
+    public AdminProduct updateProduct(@Valid @RequestBody AdminProductDto adminProductDto, @PathVariable Long id) {
         return productService.updateProduct(mapAdminProduct(adminProductDto, id));
     }
 
@@ -43,7 +45,7 @@ public class AdminProductController {
                 .description(adminProductDto.getDescription())
                 .category(adminProductDto.getCategory())
                 .price(adminProductDto.getPrice())
-                .currency(adminProductDto.getCurrency().toUpperCase())
+                .currency(adminProductDto.getCurrency())
                 .build()
         );
     }

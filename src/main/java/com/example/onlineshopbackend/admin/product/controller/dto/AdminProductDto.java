@@ -1,16 +1,31 @@
 package com.example.onlineshopbackend.admin.product.controller.dto;
 
+import com.example.onlineshopbackend.admin.product.model.AdminProductCurrency;
 import lombok.Getter;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Getter
 public class AdminProductDto {
 
-    private Long id;
+    @NotBlank
+    @Length(min = 4)
     private String name;
+
+    @NotBlank
+    @Length(min = 4)
     private String description;
+
+    @NotBlank
+    @Length(min = 4)
     private String category;
+
+    @NotBlank
+    @Min(0)
     private BigDecimal price;
-    private String currency;
+
+    private AdminProductCurrency currency;
 }
