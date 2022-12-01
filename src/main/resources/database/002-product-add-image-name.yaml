@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: dstuzynski
+      changes:
+        - addColumn:
+            tableName: product
+            columns:
+              - column:
+                  name: image
+                  type: varchar(128)
+                  position: 7
+                  constraints:
+                    nullable: true

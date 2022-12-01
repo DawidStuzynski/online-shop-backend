@@ -20,11 +20,18 @@ public class AdminProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
     private String name;
+
     private String category;
+
     private String description;
+
     private BigDecimal price;
+
     @Enumerated(EnumType.STRING)
     private AdminProductCurrency currency;
+
+    private String image;
 
 }
