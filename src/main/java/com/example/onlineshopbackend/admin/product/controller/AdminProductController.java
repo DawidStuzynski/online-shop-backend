@@ -2,14 +2,22 @@ package com.example.onlineshopbackend.admin.product.controller;
 
 
 import com.example.onlineshopbackend.admin.product.controller.dto.AdminProductDto;
+import com.example.onlineshopbackend.admin.product.controller.dto.UploadResponse;
 import com.example.onlineshopbackend.admin.product.model.AdminProduct;
 import com.example.onlineshopbackend.admin.product.service.AdminProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @RestController
 @RequiredArgsConstructor
@@ -43,18 +51,24 @@ public class AdminProductController {
         productService.deleteProduct(id);
     }
 
+    public UploadResponse uploadImage(@RequestParam("file") MultipartFile multipartFile) {
+        String filename = multipartFile.getOriginalFilename();
+        String uploadDir = "./data/productImages";
+
+        Path filePath = Paths.get(uploadDir).resolve(filename);
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            OutputStream outputStream = Files.newOutputStream(filePath);
+            inputStream.transferTo(outputStream);
+            return new UploadResponse(filename);
+        } catch (IOException e) {
+            throw new RuntimeException("File cannot be saved", e);
+        }
+    }
+
 
     private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
-        return productService.createProduct(AdminProduct.builder()
-                .id(id)
-                .name(adminProductDto.getName())
-                .description(adminProductDto.getDescription())
-                .category(adminProductDto.getCategory())
-                .price(adminProductDto.getPrice())
-                .currency(adminProductDto.getCurrency())
-                .image(adminProductDto.getImage())
-                .build()
-        );
+        return productService.createProduct(AdminProduct.builder().id(id).name(adminProductDto.getName()).description(adminProductDto.getDescription()).category(adminProductDto.getCategory()).price(adminProductDto.getPrice()).currency(adminProductDto.getCurrency()).image(adminProductDto.getImage()).build());
     }
 
 }
