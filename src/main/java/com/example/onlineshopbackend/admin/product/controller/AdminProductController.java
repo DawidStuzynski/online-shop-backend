@@ -51,6 +51,8 @@ public class AdminProductController {
         productService.deleteProduct(id);
     }
 
+
+    @PostMapping("/admin/products/upload-image")
     public UploadResponse uploadImage(@RequestParam("file") MultipartFile multipartFile) {
         String filename = multipartFile.getOriginalFilename();
         String uploadDir = "./data/productImages";
@@ -68,7 +70,14 @@ public class AdminProductController {
 
 
     private AdminProduct mapAdminProduct(AdminProductDto adminProductDto, Long id) {
-        return productService.createProduct(AdminProduct.builder().id(id).name(adminProductDto.getName()).description(adminProductDto.getDescription()).category(adminProductDto.getCategory()).price(adminProductDto.getPrice()).currency(adminProductDto.getCurrency()).image(adminProductDto.getImage()).build());
+        return productService.createProduct(AdminProduct.builder()
+                .id(id).name(adminProductDto.getName())
+                .description(adminProductDto.getDescription())
+                .category(adminProductDto.getCategory())
+                .price(adminProductDto.getPrice())
+                .currency(adminProductDto.getCurrency()).
+                image(adminProductDto.getImage())
+                .build());
     }
 
 }
