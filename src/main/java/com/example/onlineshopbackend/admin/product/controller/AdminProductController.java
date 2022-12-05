@@ -6,8 +6,12 @@ import com.example.onlineshopbackend.admin.product.controller.dto.UploadResponse
 import com.example.onlineshopbackend.admin.product.model.AdminProduct;
 import com.example.onlineshopbackend.admin.product.service.AdminProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.FileSystemResourceLoader;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -66,6 +70,18 @@ public class AdminProductController {
         } catch (IOException e) {
             throw new RuntimeException("File cannot be saved", e);
         }
+    }
+
+    @GetMapping("/data/productImage/{filename}")
+    public ResponseEntity<Resource> serveFiles(@PathVariable String filename) throws IOException {
+
+        String uploadDir = "./data/productImages/";
+        FileSystemResourceLoader fileSystemResourceLoader = new FileSystemResourceLoader();
+        Resource file = fileSystemResourceLoader.getResource(uploadDir + filename);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_TYPE, Files.probeContentType(Path.of(filename)))
+                .body(file);
     }
 
 
