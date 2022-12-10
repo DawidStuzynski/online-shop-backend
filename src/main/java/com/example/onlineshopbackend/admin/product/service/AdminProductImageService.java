@@ -21,11 +21,12 @@ public class AdminProductImageService {
 
     public String uploadImage(String filename, InputStream inputStream) {
 
-        String newFileName = filename;
+
+        String newFileName = UploadedFilesNameUtils.slugifyFileName(filename);
 
 
-        Path filePath = Paths.get(uploadDir).resolve(filename);
-        try (OutputStream outputStream = Files.newOutputStream(filePath);) {
+        Path filePath = Paths.get(uploadDir).resolve(newFileName);
+        try (OutputStream outputStream = Files.newOutputStream(filePath)) {
             inputStream.transferTo(outputStream);
         } catch (IOException e) {
             throw new RuntimeException("File cannot be saved", e);
