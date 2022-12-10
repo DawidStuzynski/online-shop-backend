@@ -23,7 +23,7 @@ public class AdminProductImageService {
 
 
         String newFileName = UploadedFilesNameUtils.slugifyFileName(filename);
-
+        newFileName = ExistingFileRenameUtils.renameIfExists(Path.of(uploadDir), newFileName);
 
         Path filePath = Paths.get(uploadDir).resolve(newFileName);
         try (OutputStream outputStream = Files.newOutputStream(filePath)) {
