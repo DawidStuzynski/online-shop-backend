@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 4
+      author: dstuzynski
+      changes:
+        - addUniqueConstraint:
+            columnNames: slug
+            tableName: product
+
