@@ -1,0 +1,14 @@
+databaseChangeLog:
+  - changeSet:
+      id: 3
+      author: dstuzynski
+      changes:
+        - addColumn:
+            tableName: product
+            columns:
+              - column:
+                  name: slug
+                  type: varchar(128)
+                  position: 8
+                  constraints:
+                    nullable: false
