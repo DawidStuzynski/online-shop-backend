@@ -6,8 +6,8 @@ import com.example.onlineshopbackend.admin.product.controller.dto.UploadResponse
 import com.example.onlineshopbackend.admin.product.model.AdminProduct;
 import com.example.onlineshopbackend.admin.product.service.AdminProductImageService;
 import com.example.onlineshopbackend.admin.product.service.AdminProductService;
+import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
-import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,10 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
 @RestController
 @RequiredArgsConstructor
@@ -87,9 +85,16 @@ public class AdminProductController {
                 .description(adminProductDto.getDescription())
                 .category(adminProductDto.getCategory())
                 .price(adminProductDto.getPrice())
-                .currency(adminProductDto.getCurrency()).
-                image(adminProductDto.getImage())
+                .currency(adminProductDto.getCurrency())
+                .image(adminProductDto.getImage())
+                .slug(slugifySlug(adminProductDto.getSlug()))
                 .build());
+    }
+
+    private String slugifySlug(String slug) {
+        Slugify slugify = new Slugify();
+        return slugify.withCustomReplacement("_", "-")
+                .slugify(slug);
     }
 
 }

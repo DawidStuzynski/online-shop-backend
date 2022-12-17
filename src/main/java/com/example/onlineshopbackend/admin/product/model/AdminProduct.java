@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
 
 @Entity
@@ -33,5 +35,9 @@ public class AdminProduct {
     private AdminProductCurrency currency;
 
     private String image;
+
+    @NotBlank
+    @Length(min = 4)
+    private String slug;
 
 }
