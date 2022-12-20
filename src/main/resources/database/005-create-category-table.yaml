@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: slug
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
