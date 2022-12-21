@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: dstuzynski
+      changes:
+        - insert:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: Other
+              - column:
+                  name: description
+                  value: ""
+              - column:
+                  name: slug
+                  value: Other
+        - update:
+            tableName: product
+            columns:
+              - column:
+                  name: category_id
+                  value: 1
+        - alterTable:
+            tableName: product
+            columns:
+              - modifyColumn:
+                  name: category_id
+                  type: bigint
+                  constraints:
+                    nullable: false
