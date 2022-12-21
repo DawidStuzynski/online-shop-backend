@@ -17,4 +17,7 @@ public class ProductService {
         return productRepository.findAll(pageable);
     }
 
+    public Product getProduct(String slug) {
+        return productRepository.findBySlug(slug).orElseThrow();
+    }
 }
