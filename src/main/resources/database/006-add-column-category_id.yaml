@@ -1,0 +1,23 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: dstuzynski
+      changes:
+        - alterTable:
+            tableName: product
+            columns:
+              - addColumn:
+                  name: category_id
+                  type: bigint
+                  afterColumn: category
+        - alterTable:
+            tableName: product
+            columns:
+              - dropColumn:
+                  name: category
+        - addForeignKeyConstraint:
+            baseTableName: product
+            baseColumnNames: category_id
+            referencedTableName: category
+            referencedColumnNames: id
+            constraintName: fk_product_category_id
