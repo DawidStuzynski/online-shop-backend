@@ -25,7 +25,7 @@ public class AdminProduct {
 
     private String name;
 
-    private String category;
+    private Long categoryId;
 
     private String description;
 

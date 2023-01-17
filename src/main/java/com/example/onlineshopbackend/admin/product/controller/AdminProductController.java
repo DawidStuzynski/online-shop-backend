@@ -83,7 +83,7 @@ public class AdminProductController {
         return productService.createProduct(AdminProduct.builder()
                 .id(id).name(adminProductDto.getName())
                 .description(adminProductDto.getDescription())
-                .category(adminProductDto.getCategory())
+                .categoryId(adminProductDto.getCategoryId())
                 .price(adminProductDto.getPrice())
                 .currency(adminProductDto.getCurrency())
                 .image(adminProductDto.getImage())
