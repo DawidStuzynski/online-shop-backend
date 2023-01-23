@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 8
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: review
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_name
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: text
