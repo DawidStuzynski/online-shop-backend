@@ -1,7 +1,7 @@
 package com.example.onlineshopbackend.product.controller;
 
-import com.example.onlineshopbackend.product.controller.dto.ProductListDto;
-import com.example.onlineshopbackend.product.model.Product;
+import com.example.onlineshopbackend.common.dto.ProductListDto;
+import com.example.onlineshopbackend.common.model.Product;
 import com.example.onlineshopbackend.product.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.constraints.Length;

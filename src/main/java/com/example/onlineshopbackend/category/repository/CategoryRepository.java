@@ -1,6 +1,6 @@
 package com.example.onlineshopbackend.category.repository;
 
-import com.example.onlineshopbackend.category.model.Category;
+import com.example.onlineshopbackend.common.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

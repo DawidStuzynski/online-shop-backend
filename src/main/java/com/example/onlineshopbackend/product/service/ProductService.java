@@ -1,7 +1,7 @@
 package com.example.onlineshopbackend.product.service;
 
-import com.example.onlineshopbackend.product.model.Product;
-import com.example.onlineshopbackend.product.repository.ProductRepository;
+import com.example.onlineshopbackend.common.model.Product;
+import com.example.onlineshopbackend.common.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
