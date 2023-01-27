@@ -1,6 +1,7 @@
 package com.example.onlineshopbackend.admin.product.service;
 
 
+import com.example.onlineshopbackend.admin.common.utils.SlugifyUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.core.io.Resource;
@@ -22,7 +23,7 @@ public class AdminProductImageService {
     public String uploadImage(String filename, InputStream inputStream) {
 
 
-        String newFileName = UploadedFilesNameUtils.slugifyFileName(filename);
+        String newFileName = SlugifyUtils.slugifyFileName(filename);
         newFileName = ExistingFileRenameUtils.renameIfExists(Path.of(uploadDir), newFileName);
 
         Path filePath = Paths.get(uploadDir).resolve(newFileName);

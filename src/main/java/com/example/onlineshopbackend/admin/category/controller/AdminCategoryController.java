@@ -4,13 +4,19 @@ package com.example.onlineshopbackend.admin.category.controller;
 import com.example.onlineshopbackend.admin.category.AdminCategory;
 import com.example.onlineshopbackend.admin.category.controller.dto.AdminCategoryDto;
 import com.example.onlineshopbackend.admin.category.service.AdminCategoryService;
-import com.github.slugify.Slugify;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-import static com.example.onlineshopbackend.admin.product.controller.AdminProductController.EMPTY_ID;
+import static com.example.onlineshopbackend.admin.common.utils.SlugifyUtils.slugifySlug;
 
 @RestController
 @RequestMapping("/admin/categories")
@@ -39,17 +45,11 @@ public class AdminCategoryController {
     private AdminCategory mapToAdminCategory(Long id, AdminCategoryDto adminCategoryDto) {
 
         return AdminCategory.builder()
+                .id(id)
                 .name(adminCategoryDto.getName())
                 .description(adminCategoryDto.getDescription())
-                .slug(slugifyCategoryName(adminCategoryDto.getSlug()))
+                .slug(slugifySlug(adminCategoryDto.getSlug()))
                 .build();
-    }
-
-    private String slugifyCategoryName(String slug) {
-        Slugify slugify = new Slugify();
-        return slugify.withCustomReplacement("_", "-")
-                .slugify(slug);
-
     }
 
     @PutMapping("/{id}")
