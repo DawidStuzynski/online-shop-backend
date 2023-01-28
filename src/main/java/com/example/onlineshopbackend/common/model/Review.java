@@ -28,4 +28,5 @@ public class Review {
 
     private String content;
 
+    private boolean moderated;
 }

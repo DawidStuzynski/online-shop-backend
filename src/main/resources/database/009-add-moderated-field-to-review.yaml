@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 9
+      author: dstuzynski
+      changes:
+        - addColumn:
+            tableName: review
+            column:
+              name: moderated
+              type: boolean
+              defaultValue: false
