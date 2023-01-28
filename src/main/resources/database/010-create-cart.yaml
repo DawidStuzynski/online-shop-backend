@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 10
+      author: dstuzynski
+      changes:
+        - createTable:
+          tableName: cart
+          columns:
+            - column:
+                name: id
+              type: bigint
+              constraints:
+                primaryKey: true
+                nullable: false
+                autoIncrement: true
+        - column:
+          name: created
+          type: datetime
+          constraints:
+          nullable: false
+
+
