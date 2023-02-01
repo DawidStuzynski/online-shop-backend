@@ -28,5 +28,4 @@ public class CartController {
     public CartSummaryDto addProductToCart(@PathVariable Long id, @RequestBody CartProductDto cartProductDto) {
         return CartMapper.mapToCartSummary(cartService.addProductToCart(id, cartProductDto));
     }
-
 }
