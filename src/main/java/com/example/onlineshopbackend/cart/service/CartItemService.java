@@ -13,4 +13,8 @@ public class CartItemService {
     public void deleteCartItem(Long id) {
         cartItemRepository.deleteById(id);
     }
+
+    public Long countItemInCart(Long cartId) {
+        return cartItemRepository.countByCartId(cartId);
+    }
 }
