@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 12
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: apporder
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: placeDate
+                  type: datetime
+                  constraints:
+                    nullable: false
+              - column:
+                  name: orderStatus
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: grossValue
+                  type: decimal(6,2)
+                  constraints:
+                    nullable: false
+
