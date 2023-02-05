@@ -28,4 +28,40 @@ databaseChangeLog:
                   type: decimal(6,2)
                   constraints:
                     nullable: false
+              - column:
+                  name: firstname
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: lastname
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: street
+                  type: varchar(80)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: zipcode
+                  type: varchar(6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: city
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: phone
+                  type: varchar(16)
+                  constraints:
+                    nullable: false
+
 
