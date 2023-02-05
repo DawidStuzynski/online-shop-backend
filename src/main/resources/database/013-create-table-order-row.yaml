@@ -1,0 +1,46 @@
+databaseChangeLog:
+  - changeSet:
+      id: 13
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: order_row
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: order_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: product_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(6,2)
+                  constraints:
+                    nullable: false
+            foreignKeys:
+              - foreignKey:
+                  foreignTableName: apporder
+                  columnNames: order_id
+                  referencedColumnNames: id
+                  constraintName: fk_order_row_order_id
+              - foreignKey:
+                  foreignTableName: product
+                  columnNames: product_id
+                  referencedColumnNames: id
+                  constraintName: fk_order_row_product_id
