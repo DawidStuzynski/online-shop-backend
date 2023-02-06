@@ -1,4 +1,4 @@
-package com.example.onlineshopbackend.cart.model;
+package com.example.onlineshopbackend.common.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

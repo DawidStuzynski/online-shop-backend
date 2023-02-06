@@ -30,6 +30,20 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    private String firstname;
+
+    private String lastname;
+
+    private String street;
+
+    private String zipcode;
+
+    private String city;
+
+    private String email;
+
+    private String phone;
+
     private LocalDateTime placeDate;
 
     @Enumerated(EnumType.STRING)

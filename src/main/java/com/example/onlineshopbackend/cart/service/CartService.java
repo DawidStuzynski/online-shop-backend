@@ -1,9 +1,9 @@
 package com.example.onlineshopbackend.cart.service;
 
-import com.example.onlineshopbackend.cart.model.Cart;
-import com.example.onlineshopbackend.cart.model.CartItem;
+import com.example.onlineshopbackend.common.model.Cart;
+import com.example.onlineshopbackend.common.model.CartItem;
 import com.example.onlineshopbackend.cart.model.dto.CartProductDto;
-import com.example.onlineshopbackend.cart.repository.CartRepository;
+import com.example.onlineshopbackend.common.repository.CartRepository;
 import com.example.onlineshopbackend.common.model.Product;
 import com.example.onlineshopbackend.common.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
