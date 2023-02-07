@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 14
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: shipment
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(6,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: default_shipment
+                  type: boolean
+                  defaultValue: false
