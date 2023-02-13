@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 15
+      author: dstuzynski
+      changes:
+        - alterTable:
+            tableName: order_row
+            columns:
+              - alterColumn:
+                  name: product_id
+                  type: bigint
+        - addColumn:
+            columnName: shipment_id
+            type: bigint
+            tableName: order_row
+        - addForeignKeyConstraint:
+            baseTableName: order_row
+            baseColumnNames: shipment_id
+            referencedTableName: shipment
+            referencedColumnNames: id
