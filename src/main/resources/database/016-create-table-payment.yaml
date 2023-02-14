@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 16
+      author: dstuzynski
+      changes:
+        - createTable:
+            tableName: payment
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(64)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: type
+                  type: varchar(32)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: default_payment
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: note
+                  type: text
